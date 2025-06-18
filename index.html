@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcelo D'Ávila - Soluções Premium de Automação</title>
+    <title>Marcelo D'Ávila - Da Indústria ao Digital</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
@@ -35,6 +35,8 @@
             --shadow-luxury: 0 8px 32px rgba(0, 0, 0, 0.3);
             --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.2);
             --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-elegant: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --transition-elegant: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
@@ -45,6 +47,7 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
+            scroll-behavior: smooth;
         }
 
         /* Luxury Background Effects */
@@ -76,16 +79,6 @@
             width: 30%;
             height: 30%;
             background: radial-gradient(circle, rgba(255, 215, 0, 0.02) 0%, transparent 70%);
-        }
-
-        /* Remove animações desnecessárias e mantém clean */
-        
-        @keyframes float-primary {
-            /* Removido - sem animações flutuantes */
-        }
-
-        @keyframes float-secondary {
-            /* Removido - sem animações flutuantes */
         }
 
         .container {
@@ -131,7 +124,7 @@
             letter-spacing: -1px;
         }
 
-        .story-text {
+        .bio-text {
             font-size: 17px;
             font-weight: 500;
             color: var(--gray-700);
@@ -140,14 +133,37 @@
             text-align: left;
         }
 
-        .story-highlight {
+        .industry-to-digital {
+            font-size: 24px;
+            font-weight: 900;
+            color: #3b82f6;
+            text-align: center;
+            margin: 30px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .bio-highlight {
             color: var(--luxury-gold);
             font-weight: 700;
         }
 
-        .story-emphasis {
+        .bio-emphasis {
             font-weight: 700;
             color: var(--gray-900);
+        }
+
+        .opportunities-text {
+            text-align: center;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 15px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #d4af37 0%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
         }
 
         .location-badge {
@@ -159,17 +175,12 @@
             font-weight: 600;
             display: inline-block;
             box-shadow: var(--shadow-gold);
+            transition: var(--transition-elegant);
         }
 
-        @keyframes badge-glow {
-            0%, 100% { 
-                transform: translateY(0);
-                box-shadow: var(--shadow-floating);
-            }
-            50% { 
-                transform: translateY(-2px);
-                box-shadow: 0 25px 50px -8px rgba(99, 102, 241, 0.3);
-            }
+        .location-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
         }
 
         /* Luxury Services */
@@ -177,7 +188,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .service-card {
@@ -187,15 +198,31 @@
             box-shadow: var(--shadow-card);
             border: 1px solid var(--gray-200);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-elegant);
             position: relative;
             overflow: hidden;
         }
 
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: var(--gradient-gold);
+            transition: height 0.3s ease;
+            opacity: 0.1;
+        }
+
         .service-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-luxury);
+            box-shadow: 0 12px 28px rgba(212, 175, 55, 0.15);
             border-color: var(--luxury-gold);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
         }
 
         .service-number {
@@ -213,7 +240,7 @@
         }
 
         .service-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--gray-900);
             margin-bottom: 12px;
@@ -235,6 +262,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 8px;
+            transition: var(--transition-elegant);
+        }
+
+        .service-card:hover .service-price {
+            transform: scale(1.05);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
         }
 
         .service-installments {
@@ -242,6 +275,359 @@
             color: var(--gray-600);
             font-weight: 500;
         }
+
+        /* Payment Info */
+        .payment-info {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .payment-info p {
+            font-size: 14px;
+            color: var(--pale-gold);
+            font-weight: 500;
+        }
+
+        /* Perguntas Desafiadoras */
+        .challenge-questions {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .challenge-questions::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-gold);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .rotating-question {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            position: absolute;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .rotating-question.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rotating-question.fade-out {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        /* Quiz Interativo */
+        .interactive-quiz {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-quiz::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-gold);
+        }
+
+        .quiz-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--gray-900);
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quiz-option {
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--gray-700);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--luxury-gold);
+            background: var(--luxury-black);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .quiz-option .option-number {
+            background: var(--gradient-gold);
+            color: var(--luxury-black);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+
+        .quiz-option.special {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            border-color: #667eea;
+        }
+
+        .quiz-option.special:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .quiz-option.special .option-number {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        /* Email Capture */
+        .email-capture {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border: 2px solid var(--luxury-gold);
+        }
+
+        .email-capture.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--luxury-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .email-submit {
+            background: var(--gradient-gold);
+            color: var(--luxury-black);
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .email-submit:hover {
+            background: var(--luxury-black);
+            color: var(--luxury-gold);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* Notificações Elegantes */
+        .notification-elegant {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: var(--white);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transform: translateX(calc(-100% - 50px));
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 320px;
+            border-left: 3px solid var(--luxury-gold);
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification-elegant.show {
+            transform: translateX(0);
+        }
+
+        .notif-emoji {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .notif-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notif-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+            line-height: 1.4;
+        }
+
+        /* Badge de Disponibilidade */
+        .availability-badge {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 997;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition-elegant);
+            cursor: pointer;
+        }
+
+        .availability-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
+            border-color: var(--luxury-gold);
+        }
+
+        .availability-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .availability-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .availability-badge.offline .availability-dot {
+            background: #ef4444;
+            animation: none;
+        }
+
+        /* Micro-animações nos textos importantes */
+        .bio-highlight {
+            color: var(--luxury-gold);
+            font-weight: 700;
+            transition: var(--transition-elegant);
+        }
+
+        .bio-highlight:hover {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Animação de entrada suave para elementos */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
 
         /* Luxury Chat Bot */
         .chat-bot {
@@ -282,6 +668,7 @@
             font-size: 24px;
             margin-bottom: 15px;
             color: var(--luxury-black);
+            position: relative;
         }
 
         .chat-avatar::after {
@@ -528,7 +915,7 @@
                 margin-bottom: 20px;
             }
 
-            .story-text {
+            .bio-text {
                 font-size: 16px;
                 margin-bottom: 20px;
             }
@@ -541,7 +928,7 @@
 
             .services {
                 gap: 18px;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
 
             .service-card {
@@ -558,7 +945,7 @@
             }
 
             .service-title {
-                font-size: 18px;
+                font-size: 16px;
                 margin-bottom: 10px;
             }
 
@@ -573,6 +960,69 @@
 
             .service-installments {
                 font-size: 12px;
+            }
+
+            .payment-info {
+                margin-bottom: 20px;
+                padding: 12px;
+            }
+
+            .challenge-questions {
+                margin-bottom: 20px;
+                padding: 20px 15px;
+                min-height: 75px;
+            }
+
+            .rotating-question {
+                font-size: 15px;
+                line-height: 1.4;
+                padding: 0 5px;
+            }
+
+            .interactive-quiz {
+                padding: 24px 20px;
+                margin-bottom: 20px;
+                border-radius: 12px;
+            }
+
+            .quiz-title {
+                font-size: 18px;
+                margin-bottom: 18px;
+            }
+
+            .quiz-options {
+                gap: 12px;
+            }
+
+            .quiz-option {
+                padding: 16px 18px;
+                border-radius: 10px;
+                font-size: 15px;
+            }
+
+            .quiz-option .option-number {
+                width: 26px;
+                height: 26px;
+                font-size: 13px;
+                margin-right: 10px;
+            }
+
+            .email-capture {
+                padding: 18px;
+                border-radius: 10px;
+            }
+
+            .email-input {
+                padding: 12px 14px;
+                font-size: 16px;
+                margin-bottom: 12px;
+                border-radius: 6px;
+            }
+
+            .email-submit {
+                padding: 12px 20px;
+                font-size: 15px;
+                border-radius: 6px;
             }
 
             .chat-bot {
@@ -639,6 +1089,27 @@
                 bottom: 15px;
                 right: 15px;
             }
+
+            /* Mobile adjustments for new features */
+            .notification-elegant {
+                bottom: 80px;
+                left: 10px;
+                right: 10px;
+                max-width: calc(100% - 20px);
+                font-size: 13px;
+            }
+
+            .availability-badge {
+                top: 12px;
+                right: 12px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .availability-dot {
+                width: 8px;
+                height: 8px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -656,7 +1127,7 @@
                 margin-bottom: 18px;
             }
 
-            .story-text {
+            .bio-text {
                 font-size: 15px;
                 margin-bottom: 18px;
             }
@@ -666,13 +1137,57 @@
                 padding: 8px 14px;
             }
 
+            .challenge-questions {
+                margin-bottom: 18px;
+                padding: 18px 12px;
+                min-height: 70px;
+            }
+
+            .rotating-question {
+                font-size: 14px;
+                line-height: 1.3;
+                padding: 0 3px;
+            }
+
+            .interactive-quiz {
+                padding: 20px 15px;
+                margin-bottom: 18px;
+            }
+
+            .quiz-title {
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+
+            .quiz-option {
+                padding: 14px 15px;
+                font-size: 14px;
+            }
+
+            .quiz-option .option-number {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+                margin-right: 8px;
+            }
+
+            .email-input {
+                font-size: 15px;
+                padding: 10px 12px;
+            }
+
+            .email-submit {
+                font-size: 14px;
+                padding: 10px 16px;
+            }
+
             .service-card {
                 padding: 18px 15px;
                 margin: 0 3px;
             }
 
             .service-title {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .service-price {
@@ -722,12 +1237,10 @@
         <!-- Premium Header -->
         <div class="header">
             <h1 class="name">MARCELO D'ÁVILA</h1>
-            <div class="story-text">
-                <strong>"Se Você É da CLT, Eu Também Era"</strong><br><br>
-                De supervisor com salário alto a dono do meu tempo.<br>
-                Hoje ganho mais com <span class="story-highlight">automações, sites ultra rápidos e links inteligentes</span> que trabalham por mim 24h por dia.<br><br>
-                Se eu saí da zona de conforto e mudei de vida…<br>
-                <span class="story-emphasis">"O que te impede de fazer o mesmo?"</span>
+            <div class="industry-to-digital">Da indústria ao Digital</div>
+            <div class="bio-text">
+                Imagina aprender como fazer <span class="bio-highlight">sites ultra rápidos sem programar nenhum código</span>, link na bio como essa com IA para você ou seu negócio, ter seu <span class="bio-highlight">produto Digital vendendo todos os dias</span>, automações para quaisquer nichos e <span class="bio-emphasis">possibilidade de venda globalmente!</span><br><br>
+                <div class="opportunities-text">Tenho 3 oportunidades para você:</div>
             </div>
             <div class="location-badge" id="location-info">
                 📍 Detectando sua localização...
@@ -738,28 +1251,89 @@
         <div class="services">
             <div class="service-card" onclick="redirectToProduct(1)">
                 <div class="service-number">1</div>
-                <div class="service-title">Sistema de Automação WhatsApp Business</div>
-                <div class="service-description">Chatbot inteligente com IA, sequências automáticas, integração CRM e relatórios avançados</div>
-                <div class="service-price">R$ 497</div>
-                <div class="service-installments">ou 12x de R$ 41,42 sem juros</div>
+                <div class="service-title">Automações WhatsApp, Sites, link na bio e muito mais</div>
+                <div class="service-description">Automações em seu WhatsApp e site, link na Bio, Criação de sites, aceleração 500% em carregamento de páginas e muito mais...</div>
+                <div class="service-price">R$ 97</div>
+                <div class="service-installments">ou 12x de R$ 8,08 sem juros</div>
             </div>
 
             <div class="service-card" onclick="redirectToProduct(2)">
                 <div class="service-number">2</div>
-                <div class="service-title">Website Ultra Rápido + CDN Global</div>
-                <div class="service-description">Site profissional com tecnologia Netflix, carregamento em 0.3s, SEO otimizado e hospedagem premium</div>
-                <div class="service-price">R$ 1.497</div>
-                <div class="service-installments">ou 12x de R$ 124,75 sem juros</div>
+                <div class="service-title">Quer aprender ter seu negócio online</div>
+                <div class="service-description">Além das automações, aqui achará ideias e mudará forma de pensar para criar seu produto ou serviços. Passaremos por plataformas mundiais, brasileiras, fazer conexão entre gateways de pagamentos + suporte comigo toda semana + tráfego Pago. Sistema completo.</div>
+                <div class="service-price">R$ 797</div>
+                <div class="service-installments">ou 12x de R$ 66,42 sem juros</div>
             </div>
 
             <div class="service-card" onclick="redirectToProduct(3)">
                 <div class="service-number">3</div>
-                <div class="service-title">Consultoria VIP: Automação Completa</div>
-                <div class="service-description">Implementação completa de automações, WhatsApp + Site + Email Marketing + Funis de Venda</div>
-                <div class="service-price">R$ 2.997</div>
-                <div class="service-installments">ou 12x de R$ 249,75 sem juros</div>
+                <div class="service-title">Não tem tempo para cursos</div>
+                <div class="service-description">Não tem tempo para cursos? Pensei nisso para você... Em uma call de 1 hora, vamos juntos criar sua automação especializada para sua marca, seu site, link na BIO e mais.</div>
+                <div class="service-price">R$ 997</div>
+                <div class="service-installments">ou 12x de R$ 83,08 sem juros</div>
+            </div>
+
+<!-- Email Capture Estilo Premium -->
+<div class="interactive-quiz" style="margin-top: 25px;">
+    <h3 class="quiz-title">🤔 Ainda com dúvidas?</h3>
+    <p style="margin-bottom: 15px; font-weight: 600; color: var(--gray-700); text-align: center;">
+        💎 Deixe seu e-mail e receba um vídeo exclusivo que vai esclarecer tudo!
+    </p>
+    <div class="email-capture show">
+        <input type="email" class="email-input" id="user-email" placeholder="Digite seu melhor e-mail aqui..." required>
+        <button class="email-submit" onclick="submitEmail()">🚀 Quero Receber o Vídeo Agora!</button>
+    </div>
+</div>
+
+        </div>
+
+        <!-- Payment Info -->
+        
+
+        <!-- Perguntas Desafiadoras -->
+        <div class="challenge-questions">
+            <div class="rotating-question active" id="question-0">
+                Se você chegou até aqui… o que te impede de dar o próximo passo?
+            </div>
+            <div class="rotating-question" id="question-1">
+                E se o que você busca estiver exatamente do outro lado da sua dúvida?
+            </div>
+            <div class="rotating-question" id="question-2">
+                Será que o medo de investir é maior que o medo de continuar no mesmo lugar?
+            </div>
+            <div class="rotating-question" id="question-3">
+                Quanto custa mais um mês parado, vendo os outros avançarem?
+            </div>
+            <div class="rotating-question" id="question-4">
+                E se dessa vez for diferente porque você finalmente decidiu?
+            </div>
+            <div class="rotating-question" id="question-5">
+                Você merece viver do seu digital… ou só está se permitindo sonhar?
+            </div>
+            <div class="rotating-question" id="question-6">
+                Qual o risco de não tentar… comparado ao risco de continuar travado?
             </div>
         </div>
+
+        
+            
+            <div class="email-capture" id="email-capture">
+                <p style="margin-bottom: 15px; font-weight: 600; color: var(--gray-700); text-align: center;">
+                    💎 Perfeito! Vou te enviar um vídeo exclusivo que vai esclarecer tudo!
+                </p>
+                <input type="email" class="email-input" id="user-email" placeholder="Digite seu melhor e-mail aqui..." required>
+                <button class="email-submit" onclick="submitEmail()">🚀 Quero Receber o Vídeo Agora!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificações Elegantes -->
+    <div id="notification-container"></div>
+
+    <!-- Badge de Disponibilidade -->
+    <div class="availability-badge" id="availability-badge">
+        <span class="availability-dot"></span>
+        <span class="availability-text">Marcelo online agora - Resposta em até 5 min</span>
     </div>
 
     <!-- Ultra Premium Chat Bot -->
@@ -785,7 +1359,7 @@
                 </div>
             </div>
             <div class="chat-message" id="chat-message">
-                Oi! 👋 Qual seu nome? Vou descobrir exatamente onde você está e apresentar nossas soluções premium de automação personalizadas para seu negócio!
+                Oi! 👋 Qual seu nome? Vou descobrir exatamente onde você está e apresentar as oportunidades perfeitas para transformar sua vida digital! 🚀
             </div>
             <input type="text" class="chat-input" id="user-name" placeholder="Digite seu primeiro nome aqui..." maxlength="25">
             <div class="chat-buttons" id="chat-buttons">
@@ -808,6 +1382,292 @@
         let userCity = '';
         let conversationStep = 0;
         let chatOpen = false;
+        let currentQuestionIndex = 0;
+        const totalQuestions = 7;
+        let exitIntentShown = false;
+        let lastScrollPosition = 0;
+        let notificationInterval;
+
+        // Sistema de Notificações Elegantes
+        function iniciarNotificacoes() {
+            // Primeira notificação após 45 segundos
+            setTimeout(() => {
+                mostrarNotificacaoElegante();
+                // Depois a cada 60-90 segundos
+                notificationInterval = setInterval(() => {
+                    mostrarNotificacaoElegante();
+                }, Math.random() * 30000 + 60000); // Entre 60-90 segundos
+            }, 45000);
+        }
+
+        function mostrarNotificacaoElegante() {
+            const nomes = ['João', 'Maria', 'Pedro', 'Ana', 'Carlos', 'Fernanda', 'Lucas', 'Beatriz'];
+            const acoes = [
+                { texto: '{nome} de {cidade} começou agora', emoji: '✨' },
+                { texto: '{nome} conseguiu sua primeira venda', emoji: '🎯' },
+                { texto: '3 pessoas de {cidade} entraram hoje', emoji: '📈' },
+                { texto: '{nome} criou sua primeira automação', emoji: '🤖' },
+                { texto: 'Nova turma iniciando com {nome}', emoji: '🚀' },
+                { texto: '{nome} saiu do zero para vendas diárias', emoji: '💎' }
+            ];
+
+            // Cidades próximas baseadas na localização do usuário
+            const cidadesProximas = obterCidadesProximas(userCity);
+            
+            const nome = nomes[Math.floor(Math.random() * nomes.length)];
+            const cidade = cidadesProximas[Math.floor(Math.random() * cidadesProximas.length)];
+            const acao = acoes[Math.floor(Math.random() * acoes.length)];
+            
+            const texto = acao.texto.replace('{nome}', nome).replace('{cidade}', cidade);
+            
+            // Criar elemento
+            const notificacao = document.createElement('div');
+            notificacao.className = 'notification-elegant';
+            notificacao.innerHTML = `
+                <div class="notif-content">
+                    <span class="notif-emoji">${acao.emoji}</span>
+                    <span class="notif-text">${texto}</span>
+                </div>
+            `;
+            
+            // Adicionar ao container
+            document.getElementById('notification-container').appendChild(notificacao);
+            
+            // Animar entrada
+            setTimeout(() => notificacao.classList.add('show'), 100);
+            
+            // Remover após 6 segundos
+            setTimeout(() => {
+                notificacao.classList.remove('show');
+                setTimeout(() => notificacao.remove(), 400);
+            }, 6000);
+        }
+
+        function obterCidadesProximas(cidadeAtual) {
+            // Sistema inteligente de cidades próximas
+            const regioes = {
+                'São Paulo': ['Guarulhos', 'São Bernardo', 'Santo André', 'Osasco', 'Campinas'],
+                'Rio de Janeiro': ['Niterói', 'São Gonçalo', 'Duque de Caxias', 'Nova Iguaçu'],
+                'Belo Horizonte': ['Contagem', 'Betim', 'Nova Lima', 'Sabará'],
+                'Salvador': ['Lauro de Freitas', 'Camaçari', 'Simões Filho'],
+                'Brasília': ['Taguatinga', 'Ceilândia', 'Samambaia', 'Águas Claras'],
+                'Fortaleza': ['Caucaia', 'Maracanaú', 'Aquiraz', 'Eusébio'],
+                'Curitiba': ['São José dos Pinhais', 'Colombo', 'Araucária', 'Pinhais'],
+                'Porto Alegre': ['Canoas', 'Gravataí', 'Viamão', 'Novo Hamburgo'],
+                'Recife': ['Olinda', 'Jaboatão', 'Camaragibe', 'Cabo'],
+                'Manaus': ['Iranduba', 'Manacapuru', 'Itacoatiara']
+            };
+
+            // Se a cidade do usuário está no mapa, retornar cidades próximas
+            if (regioes[cidadeAtual]) {
+                return [cidadeAtual, ...regioes[cidadeAtual]];
+            }
+            
+            // Caso contrário, retornar cidades grandes aleatórias
+            return ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Salvador', 'Brasília'];
+        }
+
+        // Sistema de Badge de Disponibilidade
+        function atualizarDisponibilidade() {
+            const badge = document.getElementById('availability-badge');
+            const dot = badge.querySelector('.availability-dot');
+            const text = badge.querySelector('.availability-text');
+            
+            const hora = new Date().getHours();
+            
+            if (hora >= 9 && hora < 22) {
+                // Online
+                badge.classList.remove('offline');
+                text.textContent = 'Marcelo online agora - Resposta em até 5 min';
+            } else {
+                // Offline
+                badge.classList.add('offline');
+                text.textContent = 'Marcelo volta às 9h - Deixe seu contato';
+            }
+
+            // Tornar clicável
+            badge.onclick = function() {
+                openChat();
+                if (hora >= 9 && hora < 22) {
+                    setTimeout(() => {
+                        typeMessage('Oi! Vi que você clicou no badge de disponibilidade. Estou online e pronto para te ajudar! Qual seu nome?');
+                    }, 800);
+                } else {
+                    setTimeout(() => {
+                        typeMessage('Oi! Mesmo estando fora do horário comercial, deixe seu nome e contato que respondo assim que voltar! Qual seu nome?');
+                    }, 800);
+                }
+            };
+        }
+
+        // Detectar intenção de saída (melhorado)
+        function detectarIntencaoSaida() {
+            // Detectar quando o mouse sai da área da página (topo)
+            document.addEventListener('mouseout', function(e) {
+                if (e.clientY <= 0 && !exitIntentShown && !chatOpen) {
+                    exitIntentShown = true;
+                    mostrarChatInteligente('saida');
+                }
+            });
+
+            // Detectar tempo de inatividade
+            let inactivityTimer;
+            function resetInactivityTimer() {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(() => {
+                    if (!chatOpen && conversationStep === 0) {
+                        mostrarChatInteligente('inatividade');
+                    }
+                }, 90000); // 90 segundos de inatividade
+            }
+
+            document.addEventListener('mousemove', resetInactivityTimer);
+            document.addEventListener('keypress', resetInactivityTimer);
+            document.addEventListener('scroll', resetInactivityTimer);
+            resetInactivityTimer();
+        }
+
+        // Chat Inteligente Melhorado
+        function mostrarChatInteligente(contexto) {
+            const mensagensContextuais = {
+                'saida': 'Ei, espera! 🎁 Tenho um presente especial para você... Qual seu nome?',
+                'inatividade': 'Ainda aí? 🤔 Que tal uma consultoria gratuita de 15 minutos? Qual seu nome?',
+                'scroll_completo': 'Uau, você leu tudo! 🌟 Merece um desconto especial... Me conta seu nome?',
+                'tempo_na_pagina': 'Você está realmente interessado! 💎 Vamos conversar? Qual seu nome?'
+            };
+
+            if (!chatOpen) {
+                openChat();
+                setTimeout(() => {
+                    typeMessage(mensagensContextuais[contexto] || mensagensContextuais['saida']);
+                }, 800);
+            }
+        }
+
+        // Detectar scroll e comportamento do usuário
+        function monitorarComportamento() {
+            let scrollTimer;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                    
+                    if (scrollPercentage > 80 && !chatOpen && conversationStep === 0) {
+                        mostrarChatInteligente('scroll_completo');
+                    }
+                }, 150);
+            });
+
+            // Tempo na página
+            setTimeout(() => {
+                if (!chatOpen && conversationStep === 0) {
+                    mostrarChatInteligente('tempo_na_pagina');
+                }
+            }, 120000); // 2 minutos
+        }
+
+        // Badge de disponibilidade clicável
+        document.addEventListener('DOMContentLoaded', function() {
+            const availabilityBadge = document.getElementById('availability-badge');
+            if (availabilityBadge) {
+                availabilityBadge.addEventListener('click', function() {
+                    openChat();
+                });
+            }
+        });
+
+        // Rotação das perguntas desafiadoras
+        function rotateQuestions() {
+            const currentQuestion = document.getElementById(`question-${currentQuestionIndex}`);
+            const nextIndex = (currentQuestionIndex + 1) % totalQuestions;
+            const nextQuestion = document.getElementById(`question-${nextIndex}`);
+            
+            // Fade out da pergunta atual
+            currentQuestion.classList.add('fade-out');
+            currentQuestion.classList.remove('active');
+            
+            setTimeout(() => {
+                // Fade in da próxima pergunta
+                nextQuestion.classList.add('active');
+                nextQuestion.classList.remove('fade-out');
+                currentQuestionIndex = nextIndex;
+            }, 300);
+        }
+
+        // Iniciar rotação das perguntas
+        setInterval(rotateQuestions, 3000);
+
+        // Quiz Interativo Functions
+        function selectQuizOption(option) {
+            // Redirecionar diretamente para o produto escolhido
+            redirectToProduct(option);
+        }
+
+        function showEmailCapture() {
+            const emailCapture = document.getElementById('email-capture');
+            emailCapture.classList.add('show');
+            
+            // Scroll suave até a captura de email
+            emailCapture.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Focus no input de email
+            setTimeout(() => {
+                document.getElementById('user-email').focus();
+            }, 600);
+        }
+
+        function submitEmail() {
+            const emailInput = document.getElementById('user-email');
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                alert('Por favor, digite seu e-mail!');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                alert('Por favor, digite um e-mail válido!');
+                return;
+            }
+            
+            // Aqui você conectaria com seu sistema de email marketing
+            // Por enquanto, vamos simular o envio e redirecionar para WhatsApp
+            
+            const successMessage = `Perfeito, ${email}! 🎉\n\nSeu vídeo exclusivo foi enviado!\n\nEnquanto isso, que tal tirar suas dúvidas diretamente comigo no WhatsApp?`;
+            
+            alert(successMessage);
+            
+            // Redirecionar para WhatsApp com mensagem personalizada
+            const whatsappMessage = encodeURIComponent(
+                `Oi Marcelo! Acabei de me cadastrar com o e-mail ${email} para receber o vídeo exclusivo. Tenho interesse nas suas soluções digitais e gostaria de saber mais sobre as oportunidades!`
+            );
+            
+            window.open(`https://wa.me/5511999999999?text=${whatsappMessage}`, '_blank');
+            
+            // Limpar o formulário
+            emailInput.value = '';
+            document.getElementById('email-capture').classList.remove('show');
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Permitir envio com Enter no campo de email
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('user-email');
+            if (emailInput) {
+                emailInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        submitEmail();
+                    }
+                });
+            }
+        });
 
         function initVoices() {
             availableVoices = speechSynthesis.getVoices().filter(voice => 
@@ -964,41 +1824,234 @@
                 window.userEstado = estado;
                 window.userOperadora = operadora;
 
-                const persuasoes = [
-                    "pronto para sair da CLT?",
-                    "que tal ter automações trabalhando 24h?", 
-                    "interessado em sites ultra rápidos com CDN?",
-                    "pronto para vender mundialmente?",
-                    "que tal usar tecnologia da Netflix?",
-                    "quer trabalhar enquanto dorme?",
-                    "pronto para ser dono do seu tempo?"
-                ];
+                // Data e hora atual
+                const agora = new Date();
+                const hora = agora.getHours();
+                const minutos = agora.getMinutes();
+                const diaSemana = agora.getDay();
 
-                const persuasao = persuasoes[Math.floor(Math.random() * persuasoes.length)];
+                // ULTRA MELHORIAS - Variações criativas de expressões positivas
+                const expressõesPositivas = [
+                    "que massa",
+                    "que bacana", 
+                    "que show",
+                    "que top",
+                    "que incrível",
+                    "que demais",
+                    "que legal",
+                    "maravilha",
+                    "sensacional",
+                    "fantástico",
+                    "que ótimo",
+                    "excelente",
+                    "perfeito",
+                    "que maravilha",
+                    "show de bola"
+                ];
+                const expressãoPositiva = expressõesPositivas[Math.floor(Math.random() * expressõesPositivas.length)];
+
+                // ULTRA MELHORIAS - Variações criativas de horário EXPANDIDAS
+                let periodoTexto = "";
+                if (hora >= 0 && hora < 6) {
+                    const variacoes = [
+                        "nessa madruga",
+                        "nessa madrugada",
+                        "de madrugada mesmo",
+                        "nesse horário de coruja",
+                        "na madruga total",
+                        "bem na madruga",
+                        "na alta madrugada",
+                        "de madrugadinha",
+                        "na madrugadona"
+                    ];
+                    periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+                } else if (hora >= 6 && hora < 12) {
+                    const variacoes = [
+                        "nessa manhã",
+                        "logo cedinho",
+                        "bem cedinho",
+                        "no comecinho do dia",
+                        "manhãzinha",
+                        "de manhãzinha",
+                        "nessa manhãzinha",
+                        "cedo assim",
+                        "bem de manhã",
+                        "na parte da manhã",
+                        "nesse início de dia"
+                    ];
+                    periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+                } else if (hora >= 12 && hora < 18) {
+                    const variacoes = [
+                        "nessa tarde",
+                        "à tarde",
+                        "no meio da tarde",
+                        "nesse finalzinho de tarde",
+                        "na tarde",
+                        "tardezinha",
+                        "nessa tardezinha",
+                        "de tardezinha",
+                        "na parte da tarde",
+                        "tarde assim",
+                        "nesse horário da tarde"
+                    ];
+                    periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+                } else {
+                    const variacoes = [
+                        "nessa noite",
+                        "à noite",
+                        "de noite mesmo",
+                        "no finalzinho do dia",
+                        "na noite",
+                        "noitinha",
+                        "de noitinha", 
+                        "nessa noitinha",
+                        "já de noite",
+                        "na parte da noite",
+                        "nesse horário da noite"
+                    ];
+                    periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+                }
+
+                // Descrições criativas dos dias da semana
+                const diasSemana = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+                const nomeDia = diasSemana[diaSemana];
+                
+                let diaDescricao = "";
+                switch(diaSemana) {
+                    case 0: // Domingo
+                        const domingos = ["domingo, dia de planejar", "domingo de descanso", "domingo, dia de projetos", "domingo, planejando a semana"];
+                        diaDescricao = domingos[Math.floor(Math.random() * domingos.length)];
+                        break;
+                    case 1: // Segunda
+                        const segundas = ["segunda-feira, comecinho da semana", "segunda, começando tudo de novo", "segunda, energia total", "segunda-feira, dia de começar"];
+                        diaDescricao = segundas[Math.floor(Math.random() * segundas.length)];
+                        break;
+                    case 2: // Terça
+                        const tercas = ["terça-feira, segundo dia da semana", "terça já, semana voando", "terça-feira, pegando o ritmo", "terça, semana acelerando"];
+                        diaDescricao = tercas[Math.floor(Math.random() * tercas.length)];
+                        break;
+                    case 3: // Quarta
+                        const quartas = ["quarta-feira, meio da semana", "quarta, hump day", "quarta-feira, metade do caminho", "quarta, meio da jornada"];
+                        diaDescricao = quartas[Math.floor(Math.random() * quartas.length)];
+                        break;
+                    case 4: // Quinta
+                        const quintas = ["quinta-feira, quase chegando", "quinta, falta pouco", "quinta-feira, na reta final", "quinta, quase no fim"];
+                        diaDescricao = quintas[Math.floor(Math.random() * quintas.length)];
+                        break;
+                    case 5: // Sexta
+                        const sextas = ["sexta-feira, sextou", "sexta, energia máxima", "sexta-feira, fim de semana chegando", "sexta, sextou mesmo"];
+                        diaDescricao = sextas[Math.floor(Math.random() * sextas.length)];
+                        break;
+                    case 6: // Sábado
+                        const sabados = ["sábado, fim de semana", "sábado, dia de projetos", "sábado, dia livre", "sábado, fim de semana total"];
+                        diaDescricao = sabados[Math.floor(Math.random() * sabados.length)];
+                        break;
+                }
+
                 const locationInfo = document.getElementById('location-info');
-                locationInfo.textContent = `📍 ${cidade} • ${persuasao}`;
+                locationInfo.textContent = `Ahh... Então está aos redores de ${cidade}, ${expressãoPositiva}! ${periodoTexto}, ${hora} horas e ${minutos.toString().padStart(2, '0')} minutos de uma ${diaDescricao}, que tal criar seu negócio ou automação no digital hoje?`;
 
             } catch (error) {
                 userCity = "Local Desconhecido";
+                const agora = new Date();
+                const hora = agora.getHours();
+                const minutos = agora.getMinutes();
                 const locationInfo = document.getElementById('location-info');
-                locationInfo.textContent = `📍 Visitante • pronto para sair da CLT?`;
+                locationInfo.textContent = `Que show! ${hora} horas e ${minutos.toString().padStart(2, '0')} minutos, que tal criar seu negócio ou automação no digital hoje?`;
             }
         }
 
         function updateLocationWithName(nome) {
-            const persuasoes = [
-                "pronto para sair da CLT?",
-                "que tal ter automações trabalhando 24h?",
-                "interessado em sites ultra rápidos com CDN?",
-                "pronto para vender mundialmente?",
-                "que tal usar tecnologia da Netflix?",
-                "quer trabalhar enquanto dorme?",
-                "pronto para ser dono do seu tempo?"
+            // Usar o mesmo sistema melhorado de detecção
+            const agora = new Date();
+            const hora = agora.getHours();
+            const minutos = agora.getMinutes();
+            const diaSemana = agora.getDay();
+
+            // Usar o estado detectado anteriormente
+            const estado = window.userEstado || "SP";
+
+            // ULTRA MELHORIAS - Variações criativas de expressões positivas
+            const expressõesPositivas = [
+                "que massa",
+                "que bacana", 
+                "que show",
+                "que top",
+                "que incrível",
+                "que demais",
+                "que legal",
+                "maravilha",
+                "sensacional",
+                "fantástico",
+                "que ótimo",
+                "excelente",
+                "perfeito",
+                "que maravilha",
+                "show de bola"
             ];
-            const persuasao = persuasoes[Math.floor(Math.random() * persuasoes.length)];
+            const expressãoPositiva = expressõesPositivas[Math.floor(Math.random() * expressõesPositivas.length)];
+
+            // ULTRA MELHORIAS - Variações criativas de horário EXPANDIDAS
+            let periodoTexto = "";
+            if (hora >= 0 && hora < 6) {
+                const variacoes = [
+                    "na madruga",
+                    "na madrugada",
+                    "de madrugada",
+                    "madrugadão",
+                    "madrugadinha",
+                    "na alta madrugada"
+                ];
+                periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+            } else if (hora >= 6 && hora < 12) {
+                const variacoes = [
+                    "pela manhã",
+                    "de manhã",
+                    "manhãzinha",
+                    "cedinho",
+                    "de manhãzinha",
+                    "início do dia"
+                ];
+                periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+            } else if (hora >= 12 && hora < 18) {
+                const variacoes = [
+                    "à tarde",
+                    "de tarde",
+                    "tardezinha",
+                    "na tarde",
+                    "de tardezinha",
+                    "meio da tarde"
+                ];
+                periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+            } else {
+                const variacoes = [
+                    "à noite",
+                    "de noite",
+                    "noitinha",
+                    "na noite",
+                    "de noitinha",
+                    "fim do dia"
+                ];
+                periodoTexto = variacoes[Math.floor(Math.random() * variacoes.length)];
+            }
+
+            // Descrições dos dias da semana
+            const diasSemana = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+            const nomeDia = diasSemana[diaSemana];
             
+            let diaDescricao = "";
+            switch(diaSemana) {
+                case 0: diaDescricao = "domingo, dia de planejar"; break;
+                case 1: diaDescricao = "segunda-feira, comecinho da semana"; break;
+                case 2: diaDescricao = "terça-feira, segundo dia da semana"; break;
+                case 3: diaDescricao = "quarta-feira, meio da semana"; break;
+                case 4: diaDescricao = "quinta-feira, quase chegando"; break;
+                case 5: diaDescricao = "sexta-feira, sextou"; break;
+                case 6: diaDescricao = "sábado, fim de semana"; break;
+            }
+
             const locationInfo = document.getElementById('location-info');
-            locationInfo.textContent = `📍 ${nome} de ${userCity} • ${persuasao}`;
+            locationInfo.textContent = `${nome}, ${expressãoPositiva}! De ${userCity}, ${hora}h${minutos.toString().padStart(2, '0')} ${periodoTexto} de ${diaDescricao}. Que tal criar seu negócio ou automação no digital hoje?`;
             
             // Scroll suave para o topo da página
             window.scrollTo({
@@ -1030,7 +2083,7 @@
             userName = nameInput.value.trim();
             
             if (!userName) {
-                typeMessage('Opa! Preciso do seu nome para criar uma proposta PERSONALIZADA e IRRESISTÍVEL só para você! Digite aí! 😊');
+                typeMessage('Opa! Preciso do seu nome para criar uma proposta PERSONALIZADA e descobrir qual das 3 oportunidades é perfeita para você! Digite aí! 😊');
                 return;
             }
 
@@ -1050,17 +2103,17 @@
             
             let diaTexto = "";
             if (diaSemana === 1 || diaSemana === 2) {
-                diaTexto = "comecinho de semana";
+                diaTexto = "comecinho de semana, perfeito para começar algo novo!";
             } else if (diaSemana === 3) {
-                diaTexto = "meio de semana";
+                diaTexto = "meio de semana, hora de acelerar!";
             } else if (diaSemana === 4) {
-                diaTexto = "está chegando final de semana";
+                diaTexto = "quase fim de semana, vamos aproveitar!";
             } else if (diaSemana === 5) {
-                diaTexto = "sextouu";
+                diaTexto = "sextouu, energia total!";
             } else if (diaSemana === 6) {
-                diaTexto = "fim de semana, dia de comemorar";
+                diaTexto = "sábado, dia de projetos!";
             } else if (diaSemana === 0) {
-                diaTexto = "primeiro dia dessa semana";
+                diaTexto = "domingo, planejando o futuro!";
             }
 
             // Clima como no código fornecido
@@ -1076,7 +2129,7 @@
             ];
             const clima = climas[Math.floor(Math.random() * climas.length)];
 
-            // Detectar dispositivo como no código
+            // Detectar dispositivo
             const userAgent = navigator.userAgent;
             let dispositivo = "dispositivo";
             if (userAgent.indexOf('iPhone') > -1) {
@@ -1087,121 +2140,131 @@
                 dispositivo = "Android";
             }
 
-            // Gírias regionais como no código
-            const girias = ["cara", "mano", "parceiro"];
-            let giria = girias[Math.floor(Math.random() * girias.length)];
-            
-            if (userCity.includes("Belo Horizonte")) {
-                giria = "uai";
-            } else if (userCity.includes("Salvador")) {
-                giria = "oxe";
-            } else if (userCity.includes("Porto Alegre")) {
-                giria = "tchê";
-            } else if (userCity.includes("Recife")) {
-                giria = "oxente";
-            }
+            // Gírias regionais usando o sistema melhorado com dados CORRETOS
+            const estado = window.userEstado || "SP";
+            const estadosInfo = {
+                // REGIÃO NORTE
+                'AC': { giria: 'Égua' }, 'AP': { giria: 'Égua' }, 'AM': { giria: 'Égua' }, 'PA': { giria: 'Égua' },
+                'RO': { giria: 'Égua' }, 'RR': { giria: 'Égua' }, 'TO': { giria: 'Égua' },
+                // REGIÃO NORDESTE
+                'AL': { giria: 'Oxente' }, 'BA': { giria: 'Oxente' }, 'CE': { giria: 'Arretado' }, 'MA': { giria: 'Eita' },
+                'PB': { giria: 'Oxente' }, 'PE': { giria: 'Oxente' }, 'PI': { giria: 'Eita' }, 'RN': { giria: 'Oxente' }, 'SE': { giria: 'Oxente' },
+                // REGIÃO CENTRO-OESTE
+                'GO': { giria: 'Bão demais' }, 'MT': { giria: 'Rensga' }, 'MS': { giria: 'Rensga' }, 'DF': { giria: 'Bão demais' },
+                // REGIÃO SUDESTE
+                'ES': { giria: 'Pocar' }, 'MG': { giria: 'Uai' }, 'RJ': { giria: 'Mano' }, 'SP': { giria: 'Mano' },
+                // REGIÃO SUL
+                'PR': { giria: 'Tchê' }, 'SC': { giria: 'Tri legal' }, 'RS': { giria: 'Bah' }
+            };
+            const giria = estadosInfo[estado]?.giria || 'cara';
 
             const operadora = window.userOperadora || "sua operadora";
 
-            // Stories CLT com salário de mais de 15k
-            const cltStories = [
-                `${cumprimento}, ${userName}! Parece que está aos redores de ${userCity}, conectado pela ${operadora}, e suponho que aí são ${hora}h${minutos.toString().padStart(2, '0')}. Que legal, parece ${clima.desc}, ${clima.temp} graus, detectei que está em um ${dispositivo} e hoje é ${nomeDia}, ${diaTexto}. E aí, ${giria}, eu ERA supervisor ganhando mais de R$ 15 mil, mas era ESCRAVO do horário! Hoje tenho automações que trabalham 24h, sites ultra rápidos usando CDN, a mesma tecnologia que Netflix e Amazon usam, vendendo mundialmente enquanto durmo. Você quer continuar na corrida dos ratos?`,
+            // Stories sobre transformação digital
+            const digitalStories = [
+                `${cumprimento}, ${userName}! Que massa te conhecer! Vi que está em ${userCity}, clima ${clima.desc} de ${clima.temp}°, ${hora}h${minutos.toString().padStart(2, '0')} numa ${nomeDia}, ${diaTexto} Conectado pela ${operadora} no seu ${dispositivo}. ${giria}, eu saí da indústria para o digital e hoje ensino como fazer sites ultra rápidos SEM programar uma linha de código! Imagina ter automações vendendo 24h enquanto você dorme? Qual dessas oportunidades faz mais sentido para você?`,
                 
-                `${cumprimento}, ${userName}! Que ${clima.desc} aí em ${userCity}, né? São ${hora}h${minutos.toString().padStart(2, '0')}, ${nomeDia}, ${diaTexto}. Vi que está num ${dispositivo} conectado pela ${operadora}. ${giria}, deixa eu te contar: eu ganhava R$ 15 mil+ como supervisor, achava que estava bem, mas era REFÉM do sistema! Hoje minhas automações faturam 24h usando tecnologia de CDN como Netflix. Você quer liberdade de verdade?`,
+                `${cumprimento}, ${userName}! Que legal encontrar você aí em ${userCity}! São ${hora}h${minutos.toString().padStart(2, '0')}, ${nomeDia}, ${diaTexto} Clima ${clima.desc}, ${clima.temp}°. ${giria}, da indústria ao digital foi a melhor decisão da minha vida! Hoje ensino pessoas como você a criar sites ultra rápidos, automações inteligentes e vender globalmente. Qual das 3 oportunidades te chamou mais atenção?`,
                 
-                `${cumprimento}, ${userName}! Detectei que está em ${userCity}, clima ${clima.desc} de ${clima.temp}°, são ${hora}h${minutos.toString().padStart(2, '0')} numa ${nomeDia}. ${giria}, eu ODIAVA segunda-feira mesmo ganhando mais de 15 mil! Era CLT, tinha que pedir licença até pra respirar. Hoje acordo quando quero, meus sites ultra rápidos vendem mundialmente. Tecnologia que Netflix usa, trabalhando enquanto durmo. Você quer a CHAVE DA LIBERDADE?`
+                `${cumprimento}, ${userName}! Detectei que está em ${userCity}, ${dispositivo} conectado pela ${operadora}, ${hora}h${minutos.toString().padStart(2, '0')} de ${nomeDia}. ${giria}, imagina ter um negócio digital rodando sozinho? Saí da indústria e hoje vivo de sites que criei sem saber programar, automações que vendem 24h. É POSSÍVEL e vou te mostrar como! Das 3 oportunidades, qual te interessa mais?`
             ];
             
-            const story = cltStories[Math.floor(Math.random() * cltStories.length)];
+            const story = digitalStories[Math.floor(Math.random() * digitalStories.length)];
             
             typeMessage(story, () => {
                 document.getElementById('user-name').style.display = 'none';
                 document.getElementById('chat-buttons').innerHTML = `
-                    <button class="chat-btn" onclick="nextStep('liberdade')">💎 Quero LIBERDADE FINANCEIRA</button>
-                    <button class="chat-btn" onclick="nextStep('tecnologia')">🚀 Quero Tecnologia Premium</button>
-                    <button class="chat-btn" onclick="nextStep('tempo')">⏰ Quero Ser DONO do MEU TEMPO</button>
-                    <button class="chat-btn primary" onclick="nextStep('tudo')">🔥 EU QUERO SOLUÇÕES PREMIUM!</button>
+                    <button class="chat-btn" onclick="nextStep('automacoes')">🤖 R$ 97 - Automações WhatsApp + Sites</button>
+                    <button class="chat-btn" onclick="nextStep('curso')">📚 R$ 797 - Curso Completo + Grupo</button>
+                    <button class="chat-btn" onclick="nextStep('call')">⚡ R$ 997 - Call de 90min + Tudo Pronto</button>
+                    <button class="chat-btn primary" onclick="nextStep('todas')">🔥 QUERO SABER DE TODAS!</button>
                 `;
             });
         }
 
-        function nextStep(problem) {
+        function nextStep(choice) {
             conversationStep = 2;
             
-            let giria = "";
-            
-            if (userCity.includes("Belo Horizonte")) {
-                giria = "uai";
-            } else if (userCity.includes("Salvador")) {
-                giria = "oxe";
-            } else if (userCity.includes("Porto Alegre")) {
-                giria = "tchê";
-            } else if (userCity.includes("Recife")) {
-                giria = "oxente";
-            }
+            // Usar o sistema melhorado de gírias com dados CORRETOS
+            const estado = window.userEstado || "SP";
+            const estadosInfo = {
+                // REGIÃO NORTE
+                'AC': { giria: 'Égua' }, 'AP': { giria: 'Égua' }, 'AM': { giria: 'Égua' }, 'PA': { giria: 'Égua' },
+                'RO': { giria: 'Égua' }, 'RR': { giria: 'Égua' }, 'TO': { giria: 'Égua' },
+                // REGIÃO NORDESTE
+                'AL': { giria: 'Oxente' }, 'BA': { giria: 'Oxente' }, 'CE': { giria: 'Arretado' }, 'MA': { giria: 'Eita' },
+                'PB': { giria: 'Oxente' }, 'PE': { giria: 'Oxente' }, 'PI': { giria: 'Eita' }, 'RN': { giria: 'Oxente' }, 'SE': { giria: 'Oxente' },
+                // REGIÃO CENTRO-OESTE
+                'GO': { giria: 'Bão demais' }, 'MT': { giria: 'Rensga' }, 'MS': { giria: 'Rensga' }, 'DF': { giria: 'Bão demais' },
+                // REGIÃO SUDESTE
+                'ES': { giria: 'Pocar' }, 'MG': { giria: 'Uai' }, 'RJ': { giria: 'Mano' }, 'SP': { giria: 'Mano' },
+                // REGIÃO SUL
+                'PR': { giria: 'Tchê' }, 'SC': { giria: 'Tri legal' }, 'RS': { giria: 'Bah' }
+            };
+            const giria = estadosInfo[estado]?.giria || 'Mano';
             
             const responses = {
-                'liberdade': giria ? 
-                    `PERFEITO, ${userName}! ${giria}, liberdade é acordar sem despertador, viajar quando quiser, não ter chefe! Eu conquistei isso saindo de um salário de R$ 15 mil+ para automações que trabalham sozinhas. Enquanto o pessoal da CLT aí em ${userCity} está no trânsito, eu estou faturando deitado na rede!` :
-                    `PERFEITO, ${userName}! Liberdade é acordar sem despertador, viajar quando quiser, não ter chefe! Eu conquistei isso saindo de um salário de R$ 15 mil+ para automações que trabalham sozinhas. Enquanto o pessoal da CLT aí em ${userCity} está no trânsito, eu estou faturando deitado na rede!`,
+                'automacoes': 
+                    `SHOW, ${userName}! ${giria}, automações são o futuro! Por apenas R$ 97 você vai ter WhatsApp Business rodando sozinho, sites linkados, tudo automatizado! É como ter um funcionário 24h por dia. Melhor custo-benefício disparado!`,
                     
-                'tecnologia': giria ?
-                    `ISSO AÍ, ${userName}! ${giria}, tecnologia de PRIMEIRA LINHA! Uso CDN igual Netflix e Amazon, sites que carregam em 0.3 segundos mundialmente! Saí de supervisor ganhando R$ 15 mil+ para ter a mesma infraestrutura dos gigantes da tecnologia. Você aí em ${userCity} merece o que há de melhor!` :
-                    `ISSO AÍ, ${userName}! Tecnologia de PRIMEIRA LINHA! Uso CDN igual Netflix e Amazon, sites que carregam em 0.3 segundos mundialmente! Saí de supervisor ganhando R$ 15 mil+ para ter a mesma infraestrutura dos gigantes da tecnologia. Você aí em ${userCity} merece o que há de melhor!`,
+                'curso': 
+                    `PERFEITO, ${userName}! ${giria}, o curso de R$ 797 é transformação total! Você aprende TUDO: negócio online, plataformas baratas, pagamentos, tráfego pago E ainda tem meu acompanhamento semanal. É como ter uma faculdade de marketing digital completa!`,
                     
-                'tempo': giria ?
-                    `EXATO, ${userName}! ${giria}, tempo é nossa única moeda real! Na CLT eu ganhava mais de R$ 15 mil mas vendia 8h do meu dia. Hoje tenho sistemas que trabalham 24h por mim. Enquanto durmo, eles vendem. Enquanto viajo, eles prospectam. ISSO é vida!` :
-                    `EXATO, ${userName}! Tempo é nossa única moeda real! Na CLT eu ganhava mais de R$ 15 mil mas vendia 8h do meu dia. Hoje tenho sistemas que trabalham 24h por mim. Enquanto durmo, eles vendem. Enquanto viajo, eles prospectam. ISSO é vida!`,
+                'call': 
+                    `TOP DEMAIS, ${userName}! ${giria}, a call de R$ 997 é para quem não tem tempo a perder! 90 minutos comigo e você sai com site e link bio PRONTOS, feitos na hora com IA. É transformação instantânea!`,
                     
-                'tudo': giria ?
-                    `MONSTRUOSO, ${userName}! ${giria}, essa é a mentalidade VENCEDORA! Você não quer só um bom salário, quer TUDO: liberdade, tecnologia de ponta e tempo! Assim como eu saí dos R$ 15 mil+ da CLT para conquistar TUDO. Você tem perfil de CAMPEÃO!` :
-                    `MONSTRUOSO, ${userName}! Essa é a mentalidade VENCEDORA! Você não quer só um bom salário, quer TUDO: liberdade, tecnologia de ponta e tempo! Assim como eu saí dos R$ 15 mil+ da CLT para conquistar TUDO. Você tem perfil de CAMPEÃO!`
+                'todas': 
+                    `MONSTRUOSO, ${userName}! ${giria}, essa é a mentalidade VENCEDORA! Quer conhecer todas as oportunidades antes de decidir. Inteligente demais! Todas podem ser parceladas em 12x, você escolhe a que faz mais sentido para seu momento!`
             };
             
-            typeMessage(responses[problem], () => {
+            typeMessage(responses[choice], () => {
                 document.getElementById('chat-buttons').innerHTML = `
-                    <button class="chat-btn primary" onclick="goToMarcelo()">🔥 QUERO FALAR COM MARCELO AGORA!</button>
-                    <button class="chat-btn" onclick="showPrices()">💳 Ver Investimento Primeiro</button>
-                    <button class="chat-btn" onclick="skipChat()">🤔 Vou Pensar Mais Um Pouco</button>
+                    <button class="chat-btn primary" onclick="goToMarcelo()">🚀 QUERO FALAR COM MARCELO AGORA!</button>
+                    <button class="chat-btn" onclick="showAllOptions()">💡 Ver Todas as Opções Detalhadas</button>
+                    <button class="chat-btn" onclick="skipChat()">🤔 Vou Analisar Mais Um Pouco</button>
                 `;
             });
         }
 
-        function showPrices() {
-            let giria = "";
+        function showAllOptions() {
+            // Usar o sistema melhorado de gírias com dados CORRETOS
+            const estado = window.userEstado || "SP";
+            const estadosInfo = {
+                // REGIÃO NORTE
+                'AC': { giria: 'Égua' }, 'AP': { giria: 'Égua' }, 'AM': { giria: 'Égua' }, 'PA': { giria: 'Égua' },
+                'RO': { giria: 'Égua' }, 'RR': { giria: 'Égua' }, 'TO': { giria: 'Égua' },
+                // REGIÃO NORDESTE
+                'AL': { giria: 'Oxente' }, 'BA': { giria: 'Oxente' }, 'CE': { giria: 'Arretado' }, 'MA': { giria: 'Eita' },
+                'PB': { giria: 'Oxente' }, 'PE': { giria: 'Oxente' }, 'PI': { giria: 'Eita' }, 'RN': { giria: 'Oxente' }, 'SE': { giria: 'Oxente' },
+                // REGIÃO CENTRO-OESTE
+                'GO': { giria: 'Bão demais' }, 'MT': { giria: 'Rensga' }, 'MS': { giria: 'Rensga' }, 'DF': { giria: 'Bão demais' },
+                // REGIÃO SUDESTE
+                'ES': { giria: 'Pocar' }, 'MG': { giria: 'Uai' }, 'RJ': { giria: 'Mano' }, 'SP': { giria: 'Mano' },
+                // REGIÃO SUL
+                'PR': { giria: 'Tchê' }, 'SC': { giria: 'Tri legal' }, 'RS': { giria: 'Bah' }
+            };
+            const giria = estadosInfo[estado]?.giria || 'Mano';
             
-            if (userCity.includes("Belo Horizonte")) {
-                giria = "uai";
-            } else if (userCity.includes("Salvador")) {
-                giria = "oxe";
-            } else if (userCity.includes("Porto Alegre")) {
-                giria = "tchê";
-            } else if (userCity.includes("Recife")) {
-                giria = "oxente";
-            }
-            
-            const message = giria ? 
-                `Perfeito, ${userName}! ${giria}, vou ser TRANSPARENTE total contigo. Tenho 3 soluções profissionais: R$ 497 para automação WhatsApp Business completa, R$ 1.497 para website ultra rápido com CDN global, ou R$ 2.997 para consultoria VIP com tudo incluso. Qual faz mais sentido para seu negócio?` :
-                `Perfeito, ${userName}! Vou ser TRANSPARENTE total contigo. Tenho 3 soluções profissionais: R$ 497 para automação WhatsApp Business completa, R$ 1.497 para website ultra rápido com CDN global, ou R$ 2.997 para consultoria VIP com tudo incluso. Qual faz mais sentido para seu negócio?`;
+            const message = `Beleza, ${userName}! ${giria}, vou detalhar tudo: R$ 97 é entrada no mundo digital (automações + sites), R$ 797 é transformação completa (curso + grupo + acompanhamento) e R$ 997 é solução instantânea (call 90min + tudo pronto). Todas parcelam em 12x. Qual combina mais com você?`;
             
             typeMessage(message, () => {
                 document.getElementById('chat-buttons').innerHTML = `
-                    <button class="chat-btn" onclick="selectService(1)">💬 R$ 497 - WhatsApp Business</button>
-                    <button class="chat-btn" onclick="selectService(2)">🚀 R$ 1.497 - Website Premium</button>
-                    <button class="chat-btn" onclick="selectService(3)">👑 R$ 2.997 - Consultoria VIP</button>
-                    <button class="chat-btn primary" onclick="goToMarcelo()">🎯 FALAR DIRETO COM MARCELO</button>
+                    <button class="chat-btn" onclick="selectService(1)">💰 R$ 97 - Começar no Digital</button>
+                    <button class="chat-btn" onclick="selectService(2)">🎯 R$ 797 - Transformação Total</button>
+                    <button class="chat-btn" onclick="selectService(3)">⚡ R$ 997 - Solução Instantânea</button>
+                    <button class="chat-btn primary" onclick="goToMarcelo()">🔥 FALAR DIRETO COM MARCELO</button>
                 `;
             });
         }
 
         function selectService(service) {
             const services = {
-                1: "automação WhatsApp Business completa",
-                2: "website ultra rápido com CDN global", 
-                3: "consultoria VIP com automação completa"
+                1: "automações e sites por R$ 97",
+                2: "curso completo com acompanhamento por R$ 797", 
+                3: "call de 90 minutos com tudo pronto por R$ 997"
             };
             
-            typeMessage(`ESCOLHA FANTÁSTICA, ${userName}! O ${services[service]} vai transformar completamente seu negócio! Vou te conectar com o Marcelo AGORA MESMO para começarmos! 🚀🔥`, () => {
+            typeMessage(`ESCOLHA FANTÁSTICA, ${userName}! O ${services[service]} vai transformar completamente sua vida digital! Vou te conectar com o Marcelo AGORA MESMO para começarmos sua jornada! 🚀💎`, () => {
                 setTimeout(() => {
                     redirectToProduct(service);
                     closeChat();
@@ -1210,52 +2273,56 @@
         }
 
         function goToMarcelo() {
-            let giria = "";
+            // Usar o sistema melhorado de gírias com dados CORRETOS
+            const estado = window.userEstado || "SP";
+            const estadosInfo = {
+                // REGIÃO NORTE
+                'AC': { giria: 'Égua' }, 'AP': { giria: 'Égua' }, 'AM': { giria: 'Égua' }, 'PA': { giria: 'Égua' },
+                'RO': { giria: 'Égua' }, 'RR': { giria: 'Égua' }, 'TO': { giria: 'Égua' },
+                // REGIÃO NORDESTE
+                'AL': { giria: 'Oxente' }, 'BA': { giria: 'Oxente' }, 'CE': { giria: 'Arretado' }, 'MA': { giria: 'Eita' },
+                'PB': { giria: 'Oxente' }, 'PE': { giria: 'Oxente' }, 'PI': { giria: 'Eita' }, 'RN': { giria: 'Oxente' }, 'SE': { giria: 'Oxente' },
+                // REGIÃO CENTRO-OESTE
+                'GO': { giria: 'Bão demais' }, 'MT': { giria: 'Rensga' }, 'MS': { giria: 'Rensga' }, 'DF': { giria: 'Bão demais' },
+                // REGIÃO SUDESTE
+                'ES': { giria: 'Pocar' }, 'MG': { giria: 'Uai' }, 'RJ': { giria: 'Mano' }, 'SP': { giria: 'Mano' },
+                // REGIÃO SUL
+                'PR': { giria: 'Tchê' }, 'SC': { giria: 'Tri legal' }, 'RS': { giria: 'Bah' }
+            };
+            const giria = estadosInfo[estado]?.giria || 'Mano';
             
-            if (userCity.includes("Belo Horizonte")) {
-                giria = "uai";
-            } else if (userCity.includes("Salvador")) {
-                giria = "oxe";
-            } else if (userCity.includes("Porto Alegre")) {
-                giria = "tchê";
-            } else if (userCity.includes("Recife")) {
-                giria = "oxente";
-            }
-            
-            const message = giria ?
-                `PERFEITO, ${userName}! ${giria}, você tem CORAGEM para mudar de vida! Te mandando direto para o Marcelo. Fala que a IA te mandou e que você quer sair dos R$ 15 mil+ da CLT para ter AUTOMAÇÕES que trabalham 24h como Netflix! 🔥💎` :
-                `PERFEITO, ${userName}! Você tem CORAGEM para mudar de vida! Te mandando direto para o Marcelo. Fala que a IA te mandou e que você quer sair dos R$ 15 mil+ da CLT para ter AUTOMAÇÕES que trabalham 24h como Netflix! 🔥💎`;
+            const message = `PERFEITO, ${userName}! ${giria}, você tem a mentalidade certa para o sucesso digital! Te mandando direto para o Marcelo. Fala que a IA te mandou e que você quer criar seu negócio ou automação no digital com sites ultra rápidos! 🔥💻`;
             
             typeMessage(message, () => {
                 setTimeout(() => {
-                    const message = encodeURIComponent(`Oi Marcelo! Sou ${userName} de ${userCity}. Sua IA me mandou! Quero SAIR DA CLT e conhecer as automações com tecnologia Netflix que trabalham 24h! Estou PRONTO para mudar de vida! 🚀`);
-                    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+                    const whatsappMessage = encodeURIComponent(`Oi Marcelo! Sou ${userName} de ${userCity}. Sua IA me mandou! Quero saber sobre as oportunidades digitais: sites ultra rápidos sem código, automações 24h e criar meu negócio no digital. Estou PRONTO para transformar minha vida digital! 🚀`);
+                    window.open(`https://wa.me/5511999999999?text=${whatsappMessage}`, '_blank');
                     closeChat();
                 }, 2500);
             });
         }
 
         function skipChat() {
-            typeMessage(`Entendo, ${userName || 'amigo'}! Decisões importantes precisam de reflexão. Os serviços estão logo abaixo. Quando estiver pronto para MUDAR DE VIDA e sair da CLT, estarei aqui te esperando! 💙✨`, () => {
+            typeMessage(`Entendo, ${userName || 'visitante'}! Decisões importantes precisam de análise. As oportunidades estão logo abaixo. Quando estiver pronto para TRANSFORMAR SUA VIDA DIGITAL, estarei aqui te esperando! 💙✨`, () => {
                 setTimeout(closeChat, 4000);
             });
         }
 
         function redirectToProduct(productNumber) {
             const productUrls = {
-                1: '/automacao-whatsapp-business',
-                2: '/website-ultra-rapido-cdn',
-                3: '/consultoria-vip-automacao'
+                1: '/automacoes-digitais-97',
+                2: '/curso-negocio-online-797',
+                3: '/call-90min-997'
             };
             
             const productNames = {
-                1: 'Sistema de Automação WhatsApp Business',
-                2: 'Website Ultra Rápido + CDN Global',
-                3: 'Consultoria VIP: Automação Completa'
+                1: 'Automações WhatsApp, Sites e Link na Bio',
+                2: 'Curso Negócio Online + Acompanhamento',
+                3: 'Call 90min + Site e Link Bio Prontos'
             };
             
             // Por enquanto, redireciona para WhatsApp com informações do produto
-            const message = encodeURIComponent(`Oi Marcelo! Sou ${userName || 'visitante'} de ${userCity}. Tenho interesse no ${productNames[productNumber]}. Vim através do seu site premium!`);
+            const message = encodeURIComponent(`Oi Marcelo! Sou ${userName || 'visitante'} de ${userCity}. Tenho interesse em ${productNames[productNumber]}. Vim através do seu link bio premium!`);
             window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
             
             // Quando tiver as páginas, descomente a linha abaixo:
@@ -1277,9 +2344,22 @@
                 }
                 getLocationData();
                 
+                // Iniciar sistemas de engajamento
+                atualizarDisponibilidade();
+                setInterval(atualizarDisponibilidade, 60000); // Atualizar a cada minuto
+                
+                iniciarNotificacoes();
+                detectarIntencaoSaida();
+                monitorarComportamento();
+                
+                // Chat abre mais tarde, só se necessário
                 setTimeout(() => {
-                    openChat();
-                }, 3500);
+                    // Só abre automaticamente se o usuário não interagiu
+                    if (conversationStep === 0 && !chatOpen) {
+                        // Removido para não ser invasivo
+                        // openChat();
+                    }
+                }, 8000);
             }, 1200);
         });
 
@@ -1288,6 +2368,14 @@
                 speechSynthesis.speak(new SpeechSynthesisUtterance(''));
             }
             document.removeEventListener('click', initSpeech);
+        });
+
+        // Limpar intervalos ao sair da página
+        window.addEventListener('beforeunload', () => {
+            if (notificationInterval) {
+                clearInterval(notificationInterval);
+            }
+            speechSynthesis.cancel();
         });
     </script>
 </body>
